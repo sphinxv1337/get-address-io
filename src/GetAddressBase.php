@@ -67,18 +67,17 @@ class GetAddressBase
      *
      * @param $method
      * @param $url
-     * @param array $parameters
+     * @param array|null $parameters
      *
+     * @return array
      * @throws ForbiddenException
      * @throws InvalidPostcodeException
      * @throws PostcodeNotFoundException
      * @throws ServerException
      * @throws TooManyRequestsException
      * @throws UnknownException
-     *
-     * @return array
      */
-    public function call($method, $url, array $parameters = []): array
+    public function call($method, $url, ?array $parameters = []): array
     {
         $this->queryString['api-key'] = $this->requiresAdminKey ? $this->adminKey : $this->apiKey;
 
