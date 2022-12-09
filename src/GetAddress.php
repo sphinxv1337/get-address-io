@@ -77,7 +77,7 @@ class GetAddress extends GetAddressBase
         return $response;
     }
 
-    public function autocomplete(string $term, ?array $parameters = null): AutocompleteCollectionResponse
+    public function autocomplete(string $term, array $parameters = []): AutocompleteCollectionResponse
     {
         return new AutocompleteCollectionResponse(
             $this->call(
