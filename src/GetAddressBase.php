@@ -89,6 +89,10 @@ class GetAddressBase
             $url .= '&expand=true';
         }
 
+        if ($method === 'get') {
+            $url .= '&' . http_build_query($parameters);
+        }
+
         $response = $this->http->{$method}($url, $parameters);
 
         if (floor($response->getStatusCode() / 100) > 2) {

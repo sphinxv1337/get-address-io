@@ -79,11 +79,11 @@ class GetAddress extends GetAddressBase
 
     public function autocomplete(string $term, array $parameters = []): AutocompleteCollectionResponse
     {
-        $params = '&' . http_build_query($parameters);
         return new AutocompleteCollectionResponse(
             $this->call(
                 'GET',
-                sprintf('autocomplete/%s', $term) . $params
+                sprintf('autocomplete/%s', $term),
+                $parameters
             )['suggestions'] ?? null
         );
     }
