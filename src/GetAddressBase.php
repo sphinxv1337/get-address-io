@@ -52,6 +52,8 @@ class GetAddressBase
      */
     protected $http;
 
+    protected bool $all;
+
     public function __construct($apiKey = null, $adminKey = null)
     {
         $this->apiKey = $apiKey ?? config('getaddress.api_key');
@@ -59,6 +61,7 @@ class GetAddressBase
         $this->delay = config('getaddress.limit_delay');
         $this->url = config('getaddress.url');
         $this->expand = config('getaddress.expanded_results');
+        $this->all = false;
         $this->http = new Client();
     }
 
@@ -87,6 +90,10 @@ class GetAddressBase
 
         if ($this->expand) {
             $url .= '&expand=true';
+        }
+
+        if ($this->all) {
+            $url .= '&all=true';
         }
 
         if ($method === 'get') {

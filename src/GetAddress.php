@@ -105,6 +105,13 @@ class GetAddress extends GetAddressBase
         return $this;
     }
 
+    public function all(): self
+    {
+        $this->all = true;
+
+        return $this;
+    }
+
     /**
      * @param string $postcode
      * @param array  $response
